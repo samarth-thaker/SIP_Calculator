@@ -14,35 +14,49 @@ class _UPscreenState extends State<UPscreen> {
   final TextEditingController _annualInterestRateController =
       TextEditingController();
   final TextEditingController _yearsController = TextEditingController();
-  //final TextEditingController _amountInvestedController = TextEditingController();
+  final TextEditingController _stepUpController = TextEditingController();
+  final TextEditingController _amountInvestedController = TextEditingController();
 
   double _maturityValue = 0.0;
   double _amountInvested = 0.0;
   double _earnings = 0.0;
 
-  double calculateSIPMaturity(
-      double monthlyInvestment, double annualInterestRate, int years) {
-    double monthlyRate =
-        (annualInterestRate / 100) / 12; // Monthly interest rate
-    int months = years * 12; // Total number of months
+  double calculateSIPMaturity(double monthlyInvestment,
+      double annualInterestRate, int years, double stepUpPercentage) {
+    double monthlyRate = (annualInterestRate / 100) / 12;
+    double maturityValue = 0;
 
-    double maturityValue = monthlyInvestment *
-        (pow(1 + monthlyRate, months) - 1) /
-        monthlyRate *
-        (1 + monthlyRate);
+    for (int year = 0; year < years; year++) {
+      for (int month = 0; month < 12; month++) {
+        int monthsRemaining = (years * 12) - (year * 12 + month);
+        maturityValue +=
+            monthlyInvestment * pow(1 + monthlyRate, monthsRemaining);
+      }
+
+      monthlyInvestment += monthlyInvestment * (stepUpPercentage / 100);
+    }
+
     return maturityValue;
   }
 
-  double investedAmount(
-      double monthlyInvestment, double annualInterestRate, int years) {
-    double amountInvested = monthlyInvestment * years * 12;
+  double investedAmount(double monthlyInvestment, double annualInterestRate,
+      int years, double s) {
+    double amountInvested = 0;
+   for (int year = 0; year < years; year++) {
+        for (int month = 0; month < 12; month++) {
+            amountInvested += monthlyInvestment;
+        }
+        // Increase the monthly investment amount by the step-up percentage
+        monthlyInvestment += monthlyInvestment * (s / 100);
+    }
     return amountInvested;
   }
 
-  double amountEarned(
-      double monthlyInvestment, double annualInterestRate, int years) {
-    return calculateSIPMaturity(monthlyInvestment, annualInterestRate, years) -
-        investedAmount(monthlyInvestment, annualInterestRate, years);
+  double amountEarned(double monthlyInvestment, double annualInterestRate,
+      int years, double s) {
+    return calculateSIPMaturity(
+            monthlyInvestment, annualInterestRate, years, s) -
+        investedAmount(monthlyInvestment, annualInterestRate, years, s);
   }
 
   void _calculate() {
@@ -50,13 +64,13 @@ class _UPscreenState extends State<UPscreen> {
     double annualInterestRate =
         double.parse(_annualInterestRateController.text);
     int years = int.parse(_yearsController.text);
-
+    double s = double.parse(_stepUpController.text);
     setState(() {
       _maturityValue =
-          calculateSIPMaturity(monthlyInvestment, annualInterestRate, years);
-      _amountInvested =
-          investedAmount(monthlyInvestment, annualInterestRate, years);
-      _earnings = amountEarned(monthlyInvestment, annualInterestRate, years);
+          calculateSIPMaturity(monthlyInvestment, annualInterestRate, years, s);
+       _amountInvested =
+          investedAmount(monthlyInvestment, annualInterestRate, years, s);
+      _earnings = amountEarned(monthlyInvestment, annualInterestRate, years, s);
     });
   }
 
@@ -79,6 +93,23 @@ class _UPscreenState extends State<UPscreen> {
                     ),
                   ),
                   hintText: "Investment per month (in Rs.)",
+                  contentPadding: EdgeInsets.symmetric(horizontal: 10.0),
+                ),
+                keyboardType: TextInputType.number,
+              ),
+            ),
+            const SizedBox(height: 30),
+            SizedBox(
+              width: 300,
+              child: TextField(
+                controller: _stepUpController,
+                decoration: const InputDecoration(
+                  border: OutlineInputBorder(
+                    borderSide: BorderSide(
+                      color: Colors.deepOrange,
+                    ),
+                  ),
+                  hintText: "Annual Step up (in %)",
                   contentPadding: EdgeInsets.symmetric(horizontal: 10.0),
                 ),
                 keyboardType: TextInputType.number,

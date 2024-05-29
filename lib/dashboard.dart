@@ -32,9 +32,20 @@ class _DashboardScreenState extends State<DashboardScreen> {
     Navigator.pushNamed(context, "/cagrCalc");
   }
 
-  ButtonStyle customButton() {
-    return TextButton.styleFrom(
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(18)));
+  Widget customTile(String title, IconData icon, VoidCallback onTap) {
+    return ListTile(
+      contentPadding:
+          const EdgeInsets.symmetric(vertical: 15.0, horizontal: 20.0),
+      title: Text(title, style: const TextStyle(fontSize: 18)),
+      leading: Icon(icon, size: 30),
+      trailing: const Icon(Icons.arrow_forward_ios),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(18),
+        side: BorderSide(color: Colors.grey.shade300),
+      ),
+      tileColor: Colors.grey.shade200,
+      onTap: onTap,
+    );
   }
 
   @override
@@ -43,50 +54,20 @@ class _DashboardScreenState extends State<DashboardScreen> {
       appBar: AppBar(title: const Text('Financial Calculator')),
       body: Padding(
         padding: const EdgeInsets.all(20),
-        child: Column(
+        child: ListView(
           children: [
-            const SizedBox(
-              height: 30,
-            ),
-            TextButton(
-                onPressed: lumpsum,
-                style: customButton(),
-                child: const Text("Lumpsum")),
-            const SizedBox(
-              height: 30,
-            ),
-            TextButton(
-                onPressed: sip,
-                style: customButton(),
-                child: const Text("SIP")),
-            const SizedBox(
-              height: 30,
-            ),
-            TextButton(
-                onPressed: stepup,
-                style: customButton(),
-                child: const Text(" Step up SIP")),
-            const SizedBox(
-              height: 30,
-            ),
-            TextButton(
-                onPressed: fd,
-                style: customButton(),
-                child: const Text("Fixed Deposit")),
-            const SizedBox(
-              height: 30,
-            ),
-            TextButton(
-                onPressed: rd,
-                style: customButton(),
-                child: const Text("Recurring Deposit")),
-                 const SizedBox(
-              height: 30,
-            ),
-            TextButton(
-                onPressed: cagr,
-                style: customButton(),
-                child: const Text("CAGR")),
+            const SizedBox(height: 10),
+            customTile("Lumpsum", Icons.monetization_on, lumpsum),
+            const SizedBox(height: 10),
+            customTile("SIP", Icons.account_balance_wallet, sip),
+            const SizedBox(height: 10),
+            customTile("Step up SIP", Icons.trending_up, stepup),
+            const SizedBox(height: 10),
+            customTile("Fixed Deposit", Icons.account_balance, fd),
+            const SizedBox(height: 10),
+            customTile("Recurring Deposit", Icons.repeat, rd),
+            const SizedBox(height: 10),
+            customTile("CAGR", Icons.bar_chart, cagr),
           ],
         ),
       ),
