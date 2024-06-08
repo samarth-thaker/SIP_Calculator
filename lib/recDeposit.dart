@@ -18,14 +18,19 @@ class _RDscreenState extends State<RDscreen> {
   double _amountInvested = 0.0;
   double _earnings = 0.0;
 
-  double rdMaturity(
-      double p, double annualInterestRate, int years) {
-    
+ double rdMaturity(double monthlyDeposit, double annualInterestRate, int years) {
+    double monthlyRate = (annualInterestRate / 100) / 12; // Monthly interest rate
+    int months = years * 12; // Total number of months
 
-    double maturityValue =
-        p * pow((1 + annualInterestRate / (years * 400)), (4 * years));
+    double maturityValue = 0;
+
+    for (int i = 0; i < months; i++) {
+        maturityValue += monthlyDeposit * pow(1 + monthlyRate, months - i);
+    }
+
     return maturityValue;
-  }
+}
+
 
   double investedAmount(
       double monthlyInvestment, double annualInterestRate, int years) {
@@ -34,7 +39,7 @@ class _RDscreenState extends State<RDscreen> {
   }
 
   double amountEarned(double p, double annualInterestRate, int years) {
-    return rdMaturity(p, annualInterestRate, years) - p;
+    return rdMaturity(p, annualInterestRate, years) - investedAmount(p, annualInterestRate, years);
   }
 
   void _calculate() {

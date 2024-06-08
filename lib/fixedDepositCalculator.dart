@@ -21,10 +21,6 @@ class _FDscreenState extends State<FDscreen> {
 
   double fdMaturity(
       double p, double annualInterestRate, int years) {
-   /*  double monthlyRate =
-        (annualInterestRate / 100) / 12; */ // Monthly interest rate
-    /* int months = years * 12;  */// Total number of months
-
     double maturityValue = p + ((p*annualInterestRate*years)/100);
     return maturityValue;
   }
