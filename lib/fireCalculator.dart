@@ -164,10 +164,26 @@ class _FIREState extends State<FIRE> {
               ),
             ),
             const SizedBox(height: 30),
-            TextButton(
+            ElevatedButton(
               onPressed: calculate,
-              child: const Text("Calculate my Fire"),
+              style: ElevatedButton.styleFrom(
+                foregroundColor: Colors.white, primary: Colors.blue, // text color
+                padding: EdgeInsets.symmetric(
+                    vertical: 15, horizontal: 30), // button padding
+                shape: RoundedRectangleBorder(
+                  borderRadius:
+                      BorderRadius.circular(20), // button border radius
+                ),
+              ),
+              child: Text(
+                "Calculate my Fire",
+                style: TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
             ),
+
             const SizedBox(height: 30),
             Text('Expense today: Rs. ${expenseToday.toStringAsFixed(2)}'),
             const SizedBox(height: 30),
