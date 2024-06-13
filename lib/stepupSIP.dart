@@ -15,7 +15,7 @@ class _UPscreenState extends State<UPscreen> {
       TextEditingController();
   final TextEditingController _yearsController = TextEditingController();
   final TextEditingController _stepUpController = TextEditingController();
-  final TextEditingController _amountInvestedController = TextEditingController();
+  //final TextEditingController _amountInvestedController = TextEditingController();
 
   double _maturityValue = 0.0;
   double _amountInvested = 0.0;

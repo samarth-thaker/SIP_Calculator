@@ -32,6 +32,10 @@ class _DashboardScreenState extends State<DashboardScreen> {
     Navigator.pushNamed(context, "/cagrCalc");
   }
 
+  void fire() {
+    Navigator.pushNamed(context, "/fireCalculator.dart");
+  }
+
   Widget customTile(String title, IconData icon, VoidCallback onTap) {
     return ListTile(
       contentPadding:
@@ -68,6 +72,8 @@ class _DashboardScreenState extends State<DashboardScreen> {
             customTile("Recurring Deposit", Icons.repeat, rd),
             const SizedBox(height: 10),
             customTile("CAGR", Icons.bar_chart, cagr),
+            const SizedBox(height: 10),
+            customTile("FIRE", Icons.whatshot, fire),
           ],
         ),
       ),
