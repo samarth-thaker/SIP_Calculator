@@ -33,7 +33,14 @@ class _DashboardScreenState extends State<DashboardScreen> {
   }
 
   void fire() {
-    Navigator.pushNamed(context, "/fireCalculator.dart");
+    Navigator.pushNamed(context, "/fireCalculator");
+  }
+
+  void goalLumpsum() {
+    Navigator.pushNamed(context, "/goalLumpsum");
+  }
+  void goalSIP() {
+    Navigator.pushNamed(context, "/goalSip");
   }
 
   Widget customTile(String title, IconData icon, VoidCallback onTap) {
@@ -74,6 +81,11 @@ class _DashboardScreenState extends State<DashboardScreen> {
             customTile("CAGR", Icons.bar_chart, cagr),
             const SizedBox(height: 10),
             customTile("FIRE", Icons.whatshot, fire),
+            const SizedBox(height: 10),
+            customTile("Goal Planning - Lumpsum", Icons.money, goalLumpsum),
+            const SizedBox(height: 10),
+            customTile(
+                "Goal Planning - SIP", Icons.monetization_on_sharp, goalSIP),
           ],
         ),
       ),
