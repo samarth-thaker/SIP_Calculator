@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'dart:math';
 
-class SIPscreen extends StatefulWidget {
-  const SIPscreen({Key? key}) : super(key: key);
+class SIPGoal extends StatefulWidget {
+  const SIPGoal({Key? key}) : super(key: key);
 
   @override
-  State<SIPscreen> createState() => _SIPscreenState();
+  State<SIPGoal> createState() => _SIPGoalScreen();
 }
 
-class _SIPscreenState extends State<SIPscreen> {
+class _SIPGoalScreen extends State<SIPGoal> {
   final TextEditingController _monthlyInvestmentController =
       TextEditingController();
   final TextEditingController _annualInterestRateController =
