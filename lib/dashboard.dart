@@ -39,8 +39,17 @@ class _DashboardScreenState extends State<DashboardScreen> {
   void goalLumpsum() {
     Navigator.pushNamed(context, "/goalLumpsum");
   }
+
   void goalSIP() {
     Navigator.pushNamed(context, "/goalSip");
+  }
+
+  void oneTime() {
+    Navigator.pushNamed(context, "/timedurationLumpsum");
+  }
+
+  void regular() {
+    Navigator.pushNamed(context, "/timedurationRegular");
   }
 
   Widget customTile(String title, IconData icon, VoidCallback onTap) {
@@ -86,6 +95,12 @@ class _DashboardScreenState extends State<DashboardScreen> {
             const SizedBox(height: 10),
             customTile(
                 "Goal Planning - SIP", Icons.monetization_on_sharp, goalSIP),
+            const SizedBox(height: 10),
+            customTile("Time Duration - One Time", Icons.punch_clock_rounded,
+                oneTime),
+            const SizedBox(height: 10),
+            customTile("Time Duration - Regular", Icons.punch_clock,
+                regular),
           ],
         ),
       ),
