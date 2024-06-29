@@ -52,7 +52,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
     Navigator.pushNamed(context, "/timedurationRegular");
   }
 
-  void emi() {
+  void emiCalculation() {
     Navigator.pushNamed(context, "/emiCalc");
   }
 
@@ -105,7 +105,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
             const SizedBox(height: 10),
             customTile("Time Duration - Regular", Icons.punch_clock, regular),
             const SizedBox(height: 10),
-            customTile("EMI Calculator", Icons.money, regular)
+            customTile("EMI Calculator", Icons.money, emiCalculation)
           ],
         ),
       ),
