@@ -9,9 +9,8 @@ class EmiScreen extends StatefulWidget {
 }
 
 class _EmiScreenState extends State<EmiScreen> {
-  final TextEditingController _emiController =
-      TextEditingController();
-  final TextEditingController _annualInterestRateController =
+/*   final TextEditingController _emiController = TextEditingController();
+ */  final TextEditingController _annualInterestRateController =
       TextEditingController();
   final TextEditingController _yearsController = TextEditingController();
   final TextEditingController _principalController = TextEditingController();
@@ -53,9 +52,8 @@ class _EmiScreenState extends State<EmiScreen> {
     int years = int.parse(_yearsController.text);
 
     setState(() {
-      _emi =
-          monthlyInstallment(principal, annualInterestRate, years);
-     /*  _amountInvested =
+      _emi = monthlyInstallment(principal, annualInterestRate, years);
+      /*  _amountInvested =
           investedAmount(monthlyInvestment, annualInterestRate, years); */
       /* _earnings = amountEarned(monthlyInvestment, annualInterestRate, years); */
     });
