@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'dart:math';
 
-class TimeDurationOneTimeScreen extends StatefulWidget {
-  const TimeDurationOneTimeScreen({Key? key}) : super(key: key);
+class TimeDurationLumpsum extends StatefulWidget {
+  const TimeDurationLumpsum({Key? key}) : super(key: key);
 
   @override
-  State<TimeDurationOneTimeScreen> createState() => _TimeDurationOneTimeScreen();
+  State<TimeDurationLumpsum> createState() => _TimeDurationOneTimeScreen();
 }
 
-class _TimeDurationOneTimeScreen extends State<TimeDurationOneTimeScreen> {
+class _TimeDurationOneTimeScreen extends State<TimeDurationLumpsum> {
   final TextEditingController _monthlyInvestmentController =
       TextEditingController();
   final TextEditingController _annualInterestRateController =

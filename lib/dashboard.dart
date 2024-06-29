@@ -52,6 +52,10 @@ class _DashboardScreenState extends State<DashboardScreen> {
     Navigator.pushNamed(context, "/timedurationRegular");
   }
 
+  void emi() {
+    Navigator.pushNamed(context, "/emiCalc");
+  }
+
   Widget customTile(String title, IconData icon, VoidCallback onTap) {
     return ListTile(
       contentPadding:
@@ -96,11 +100,12 @@ class _DashboardScreenState extends State<DashboardScreen> {
             customTile(
                 "Goal Planning - SIP", Icons.monetization_on_sharp, goalSIP),
             const SizedBox(height: 10),
-            customTile("Time Duration - One Time", Icons.punch_clock_rounded,
-                oneTime),
+            customTile(
+                "Time Duration - One Time", Icons.punch_clock_rounded, oneTime),
             const SizedBox(height: 10),
-            customTile("Time Duration - Regular", Icons.punch_clock,
-                regular),
+            customTile("Time Duration - Regular", Icons.punch_clock, regular),
+            const SizedBox(height: 10),
+            customTile("EMI Calculator", Icons.money, regular)
           ],
         ),
       ),

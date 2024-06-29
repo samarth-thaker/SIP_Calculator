@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'dart:math';
 
-class FIRE extends StatefulWidget {
-  const FIRE({super.key});
+class FireScreen extends StatefulWidget {
+  const FireScreen ({super.key});
 
   @override
-  State<FIRE> createState() => _FIREState();
+  State<FireScreen> createState() => _FIREState();
 }
 
-class _FIREState extends State<FIRE> {
+class _FIREState extends State<FireScreen> {
   final TextEditingController _monthlyExpenseController =
       TextEditingController();
   final TextEditingController _currentAgeController = TextEditingController();
