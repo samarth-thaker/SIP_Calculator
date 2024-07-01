@@ -60,14 +60,18 @@ class _DashboardScreenState extends State<DashboardScreen> {
     return ListTile(
       contentPadding:
           const EdgeInsets.symmetric(vertical: 15.0, horizontal: 20.0),
-      title: Text(title, style: const TextStyle(fontSize: 18)),
+      title: Text(title,
+          style: const TextStyle(
+              fontSize: 18,
+              fontWeight: FontWeight.bold,
+              color: Color.fromARGB(249, 245, 237, 213))),
       leading: Icon(icon, size: 30),
       trailing: const Icon(Icons.arrow_forward_ios),
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(18),
         side: BorderSide(color: Colors.grey.shade300),
       ),
-      tileColor: Colors.grey.shade200,
+      tileColor: Colors.black,
       onTap: onTap,
     );
   }
